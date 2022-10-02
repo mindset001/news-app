@@ -1,12 +1,32 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import HomeScreen from './components/HomeScreen';
+import Details from './components/Details';
 
+
+const Stack = createNativeStackNavigator()
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+    <Stack.Navigator>
+        <Stack.Screen name='Home' component={HomeScreen}  options={{ title: 'News Highlight',  headerStyle: {
+            backgroundColor: '#008080',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          }, }}/>
+        <Stack.Screen name='Details' component={Details}  options={{ title: 'News Details' ,   headerStyle: {
+            backgroundColor: '#008080',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },}}/>
+    </Stack.Navigator>
+  </NavigationContainer>
   );
 }
 
